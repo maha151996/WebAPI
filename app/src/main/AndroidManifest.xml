@@ -14,6 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WebAPI"
         android:usesCleartextTraffic="true">
+        <activity android:name=".AddStudent.NewStudentActivity" />
         <activity android:name=".StudentList.StudentListActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

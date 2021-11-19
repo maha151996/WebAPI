@@ -3,6 +3,7 @@ package com.example.webapi
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.webapi.AddStudent.NewStudentActivity
 import com.example.webapi.StudentList.StudentListActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -16,7 +17,8 @@ class MainActivity : AppCompatActivity() {
             startActivity(i)
         }
         AddStudent.setOnClickListener {
-
+            val i = Intent(this, NewStudentActivity::class.java)
+            startActivity(i)
         }
     }
 }

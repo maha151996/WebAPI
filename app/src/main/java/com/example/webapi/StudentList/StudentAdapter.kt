@@ -8,7 +8,7 @@ import com.example.webapi.Model.Student
 import com.example.webapi.R
 import kotlinx.android.synthetic.main.student_item_view.view.*
 
-class StudentAdapter: RecyclerView.Adapter<StudentAdapter.studentViewHolder>() {
+class StudentAdapter(var clickListnere:StudentClickListener): RecyclerView.Adapter<StudentAdapter.studentViewHolder>() {
 
     var globalStudentList:List<Student> = arrayListOf()
     class studentViewHolder(studentitemview: View) : RecyclerView.ViewHolder(studentitemview)
@@ -24,11 +24,11 @@ class StudentAdapter: RecyclerView.Adapter<StudentAdapter.studentViewHolder>() {
     override fun onBindViewHolder(holder: studentViewHolder, position: Int) {
         val student =globalStudentList[position]
         holder.itemView.studentName.text=student.FirstName.toString()
-        holder.itemView.email.text=student.email.toString()
-        holder.itemView.phoneNumber.text=student.phoneNo.toString()
-        holder.itemView.marks.text=student.marks.toString()
-        holder.itemView.delete.setOnClickListener{
-
+        holder.itemView.email.text=student.Email.toString()
+        holder.itemView.phoneNumber.text=student.PhoneNo.toString()
+        holder.itemView.marks.text=student.Marks.toString()
+        holder.itemView.setOnClickListener{
+clickListnere.studentDetail(student.id)
         }
     }
 

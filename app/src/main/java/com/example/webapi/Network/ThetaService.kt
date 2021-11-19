@@ -14,9 +14,8 @@ import retrofit2.http.Query
 
 interface ThetaService {
 
-   @GET("Home/AllStudentList")
+   @GET("Home/StudentList")
    fun getStudentist(): Call<ListResponse>
-
 @GET("/Home/GetStudentDetail")
    fun GetStudentDetail(
     @Query("id") id: Int?):Call<StudentDetailResponse>

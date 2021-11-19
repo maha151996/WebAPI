@@ -10,12 +10,17 @@ data class ListResponse (
 data class Student(
     val id: Int,
     @SerializedName("firstName")
-    val FirstName:String,
-    val lastName:String,
-    val phoneNo:String,
-    val email:String,
-    val marks:Float,
-    val isActive:Boolean,
+    var FirstName:String,
+    @SerializedName("lastName")
+    var LastName:String,
+    @SerializedName("phoneNo")
+    var PhoneNo:String,
+    @SerializedName("email")
+    var Email:String,
+    @SerializedName("marks")
+    var Marks: Double,
+    @SerializedName("isActive")
+    var IsActive:Boolean,
 
 
-)
+    )

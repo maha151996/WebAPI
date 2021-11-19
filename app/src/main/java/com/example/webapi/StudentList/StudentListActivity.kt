@@ -2,6 +2,7 @@ package com.example.webapi.StudentList
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.webapi.Model.ListResponse
 import com.example.webapi.Model.Student
@@ -13,17 +14,13 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class StudentListActivity : AppCompatActivity() {
-    var studentadapter= StudentAdapter()
+class StudentListActivity : AppCompatActivity(),StudentClickListener {
+    var studentadapter= StudentAdapter(this)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_student_list)
 
-        studentListRecyclerView.apply{
-            layoutManager=
-                LinearLayoutManager(this@StudentListActivity, LinearLayoutManager.VERTICAL,false)
-            adapter=studentadapter
-        }
+        getStudentList()
 
     }
 
@@ -37,6 +34,11 @@ fun getStudentList(){
         override fun onResponse(call: Call<ListResponse>, response: Response<ListResponse>) {
 
             response.body()?.StudentList?.let { studentadapter.studentList(it) }
+            studentListRecyclerView.apply{
+                layoutManager=
+                        LinearLayoutManager(this@StudentListActivity, LinearLayoutManager.VERTICAL,false)
+                adapter=studentadapter
+            }
         }
 
         override fun onFailure(call: Call<ListResponse>, t: Throwable) {
@@ -46,5 +48,9 @@ fun getStudentList(){
 
     })
 }
+
+    override fun studentDetail(studentID: Int) {
+       Toast.makeText(this,"Coming Soon!",Toast.LENGTH_LONG).show()
+    }
 
 }
